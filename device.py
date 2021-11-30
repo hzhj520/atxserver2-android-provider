@@ -135,8 +135,8 @@ class AndroidDevice(object):
                 self._device.sync.push(f, dest, mode)
 
     def _init_apks(self):
-        whatsinput_apk_path = fetching.get_whatsinput_apk()
-        self._install_apk(whatsinput_apk_path)
+        # whatsinput_apk_path = fetching.get_whatsinput_apk()
+        # self._install_apk(whatsinput_apk_path)
         for apk_path in fetching.get_uiautomator_apks():
             print("APKPath:", apk_path)
             self._install_apk(apk_path)
@@ -152,7 +152,7 @@ class AndroidDevice(object):
             else:
                 print(info, ":", m.version_code, m.version_name)
                 logger.debug("%s install %s", self, path)
-                self._device.install(path, force=True)
+                self._device.install(path)
         except Exception as e:
             traceback.print_exc()
             logger.warning("%s Install apk %s error %s", self, path, e)
